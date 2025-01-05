@@ -1,0 +1,8 @@
+server:
+  initContainers:
+    - name: init-permissions
+      image: busybox
+      command: ['sh', '-c', 'chown -R 65534:65534 /data && chmod -R 777 /data']
+      volumeMounts:
+        - name: storage-volume
+          mountPath: /data
